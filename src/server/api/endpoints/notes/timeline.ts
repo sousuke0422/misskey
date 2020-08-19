@@ -339,13 +339,25 @@ export default define(meta, async (ps, user) => {
 	}
 	//#endregion
 
-	const timeline = await Note.find(query, {
-		maxTimeMS: 20000,
-		limit: ps.limit,
-		sort: sort
-	});
+	try {
+		const timeline = await Note.find(query, {
+			maxTimeMS: 20000,
+			limit: ps.limit,
+			sort: sort
+		});
 
-	activeUsersChart.update(user);
+		activeUsersChart.update(user);
 
-	return await packMany(timeline, user);
+		return await packMany(timeline, user);
+	} catch (e) {
+		const d = {
+			query,
+			limit: ps.limit,
+			sort
+		};
+
+		console.log(`D08191: ${JSON.stringify(d)}`);
+
+		throw e;
+	}
 });
