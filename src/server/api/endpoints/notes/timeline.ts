@@ -357,6 +357,7 @@ export default define(meta, async (ps, user) => {
 		};
 
 		console.log(`D08191: ${JSON.stringify(d)}`);
+		console.log(`D08192: ${JSON.stringify(ps)}`);
 
 		throw e;
 	}
