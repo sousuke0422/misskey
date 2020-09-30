@@ -25,6 +25,7 @@ import { getJSONFeed } from './feed/json';
 import { buildMeta } from '../../misc/build-meta';
 import Page, { packPage } from '../../models/page';
 import { fromHtml } from '../../mfm/fromHtml';
+import { inspect } from 'util';
 const htmlescape = require('htmlescape');
 
 const env = process.env.NODE_ENV;
@@ -324,6 +325,7 @@ router.get('/streaming', async ctx => {
 	console.log(`UNEXPECTED_STREAMING_1 ${ctx.path}`);
 	ctx.status = 503;
 	ctx.set('Cache-Control', 'private, max-age=0');
+	console.log(inspect(ctx.headers));
 });
 
 // Render base html for all requests
