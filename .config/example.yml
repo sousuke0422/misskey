@@ -74,6 +74,8 @@ drive:
 # Disable Federation: (default: false)
 #disableFederation: true
 
+#ignoreApForwarded: true
+
 # Disable URL Preview (default: false)
 #disableUrlPreview: true
 
