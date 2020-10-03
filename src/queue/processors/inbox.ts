@@ -79,7 +79,7 @@ export default async (job: Bull.Job<InboxJobData>): Promise<string> => {
 	// また、http-signatureのsignerは、activity.actorと一致する必要がある
 	if (!httpSignatureValidated || user.uri !== activity.actor) {
 		// でもLD-Signatureがありそうならそっちも見る
-		if (activity.signature) {
+		if (false && activity.signature) {
 			if (activity.signature.type !== 'RsaSignature2017') {
 				return `skip: unsupported LD-signature type ${activity.signature.type}`;
 			}
