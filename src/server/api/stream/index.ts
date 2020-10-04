@@ -227,6 +227,11 @@ export default class Connection {
 		if (data.type === 'mutingChanged') {
 			this.updateMuting();
 		}
+
+		if (data.type === 'terminate') {
+			this.wsConnection.close();
+			this.dispose();
+		}
 	}
 
 	@autobind

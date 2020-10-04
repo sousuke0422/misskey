@@ -13,3 +13,7 @@ export async function publishMutingChanged(userId: mongo.ObjectID) {
 export async function publishFilterChanged(userId: mongo.ObjectID) {
 	await publishServerEvent(userId, 'filterChanged');
 }
+
+export async function publishTerminate(userId: mongo.ObjectID) {
+	await publishServerEvent(userId, 'terminate');
+}
