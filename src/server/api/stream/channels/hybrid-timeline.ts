@@ -59,7 +59,7 @@ export default class extends Channel {
 
 	@autobind
 	private async onServerEvent(data: any) {
-		if (data.type === 'FollowingChanged') {
+		if (data.type === 'followingChanged') {
 			this.updateFollowing();
 		}
 	}
