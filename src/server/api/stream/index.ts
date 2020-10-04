@@ -45,6 +45,10 @@ export default class Connection {
 			const interval = (300 * 1000) + (Math.random() * 30 * 1000);
 			this.mutingClock = setInterval(this.updateMuting, interval);
 		}
+
+		if (this.user) {
+			this.subscriber.on(`serverEvent:${this.user._id}`, this.onServerEvent);
+		}
 	}
 
 	/**
@@ -222,6 +226,11 @@ export default class Connection {
 		if (channel != null && channel.onMessage != null) {
 			channel.onMessage(data.type, data.body);
 		}
+	}
+
+	@autobind
+	private async onServerEvent(type: string) {
+		console.log(`serverEvent ${JSON.stringify(type)}`);
 	}
 
 	@autobind
