@@ -82,7 +82,8 @@ class Publisher {
 	}
 
 	public publishServerEvent = (userId: ID | null, type: string, value?: any): void => {
-		this.publish(userId ? `serverEvent:${userId}` : `serverEvent`, type, typeof value === 'undefined' ? null : value);
+		const name = userId ? `serverEvent:${userId}` : `serverEvent`;
+		this.publish(name, type, typeof value === 'undefined' ? null : value);
 	}
 }
 

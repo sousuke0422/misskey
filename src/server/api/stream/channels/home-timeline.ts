@@ -21,26 +21,10 @@ export default class extends Channel {
 
 	@autobind
 	public async init(params: any) {
-
 		await this.updateFollowing();
+		await this.updateFilter();
 
 		this.excludeForeignReply = !!params?.excludeForeignReply;
-
-		// Homeから隠すリストユーザー
-		const lists = await UserList.find({
-			userId: this.user!._id,
-			hideFromHome: true,
-		});
-
-		this.hideFromUsers = concat(lists.map(list => list.userIds)).map(x => x.toString());
-		this.hideFromHosts = concat(lists.map(list => list.hosts || [])).map(x => isSelfHost(x) ? null : x);
-
-		const hideRenotes = await UserFilter.find({
-			ownerId: this.user!._id,
-			hideRenote: true
-		});
-
-		this.hideRenoteUsers = hideRenotes.map(hideRenote => hideRenote.targetId).map(x => x.toString());
 
 		// Subscribe events
 		this.subscriber.on('notesStream', this.onNote);
@@ -57,9 +41,32 @@ export default class extends Channel {
 	}
 
 	@autobind
+	private async updateFilter() {
+		// Homeから隠すリストユーザー
+		const lists = await UserList.find({
+			userId: this.user!._id,
+			hideFromHome: true,
+		});
+
+		this.hideFromUsers = concat(lists.map(list => list.userIds)).map(x => x.toString());
+		this.hideFromHosts = concat(lists.map(list => list.hosts || [])).map(x => isSelfHost(x) ? null : x);
+
+		const hideRenotes = await UserFilter.find({
+			ownerId: this.user!._id,
+			hideRenote: true
+		});
+
+		this.hideRenoteUsers = hideRenotes.map(hideRenote => hideRenote.targetId).map(x => x.toString());
+	}
+
+	@autobind
 	private async onServerEvent(data: any) {
 		if (data.type === 'followingChanged') {
 			this.updateFollowing();
+		}
+
+		if (data.type === 'filterChanged') {
+			this.updateFilter();
 		}
 	}
 
