@@ -123,7 +123,7 @@
 				</ui-select>
 				<ui-horizon-group class="fit-bottom">
 					<ui-button @click="doExport()"><fa :icon="faDownload"/> {{ $t('export') }}</ui-button>
-					<ui-button @click="doImport()" :disabled="!['following', 'blocking', 'mute', 'user-lists'].includes(exportTarget)"><fa :icon="faUpload"/> {{ $t('import') }}</ui-button>
+					<ui-button @click="doImport()" :disabled="!['following', 'mute', 'blocking', 'user-lists'].includes(exportTarget)"><fa :icon="faUpload"/> {{ $t('import') }}</ui-button>
 				</ui-horizon-group>
 			</div>
 		</section>
