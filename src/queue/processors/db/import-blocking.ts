@@ -69,7 +69,7 @@ export async function importBlocking(job: Bull.Job<DbUserImportJobData>): Promis
 
 			logger.info(`Block[${linenum}] ${target._id} ...`);
 
-			block(user, target);
+			await block(user, target);
 		} catch (e) {
 			logger.warn(`Error in line:${linenum} ${e}`);
 		}

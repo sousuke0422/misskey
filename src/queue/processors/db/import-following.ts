@@ -2,7 +2,7 @@ import * as Bull from 'bull';
 import * as mongo from 'mongodb';
 
 import { queueLogger } from '../../logger';
-import User from '../../../models/user';
+import User, { IUser } from '../../../models/user';
 import follow from '../../../services/following/create';
 import DriveFile from '../../../models/drive-file';
 import { getOriginalUrl } from '../../../misc/get-drive-file-url';
@@ -46,7 +46,7 @@ export async function importFollowing(job: Bull.Job<DbUserImportJobData>): Promi
 			const acct = line.split(',')[0].trim();
 			const { username, host } = parseAcct(acct);
 
-			let target = isSelfHost(host) ? await User.findOne({
+			let target: IUser | null | undefined = isSelfHost(host) ? await User.findOne({
 				host: null,
 				usernameLower: username.toLowerCase()
 			}) : await User.findOne({
@@ -69,7 +69,7 @@ export async function importFollowing(job: Bull.Job<DbUserImportJobData>): Promi
 
 			logger.info(`Follow[${linenum}] ${target._id} ...`);
 
-			follow(user, target);
+			await follow(user, target);
 		} catch (e) {
 			logger.warn(`Error in line:${linenum} ${e}`);
 		}
