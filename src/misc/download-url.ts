@@ -66,13 +66,13 @@ export async function downloadUrl(url: string, path: string) {
 			logger.warn(`maxSize exceeded (${progress.transferred} > ${maxSize}) on downloadProgress`);
 			req.destroy();
 		}
-	}).on('error', e => {
+	}).on('error', (e: any) => {
 		if (e.name === 'HTTPError') {
 			const statusCode = (e as Got.HTTPError).response.statusCode;
-			logger.error(`Got ${statusCode} (${url})`);
-			throw statusCode;
-		} else {
-			throw e;
+			const statusMessage = (e as Got.HTTPError).response.statusMessage;
+			e.name = `StatusError`;
+			e.statusCode = statusCode;
+			e.message = `${statusCode} ${statusMessage}`;
 		}
 	});
 
