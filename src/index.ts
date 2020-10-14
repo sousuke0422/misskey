@@ -20,6 +20,7 @@ import { lessThan } from './prelude/array';
 import { program } from './argv';
 import { checkMongoDB } from './misc/check-mongodb';
 import { showMachineInfo } from './misc/show-machine-info';
+import { inspect } from 'util';
 
 const logger = new Logger('core', 'cyan');
 const bootLogger = logger.createSubLogger('boot', 'magenta', false);
@@ -262,7 +263,10 @@ if (!program.quiet) {
 
 // Display detail of uncaught exception
 process.on('uncaughtException', err => {
-	logger.error(err);
+	try {
+		logger.error(err);
+		logger.error(inspect(err));
+	} catch { }
 });
 
 // Dying away...
