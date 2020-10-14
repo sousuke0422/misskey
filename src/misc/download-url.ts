@@ -69,12 +69,8 @@ export async function downloadUrl(url: string, path: string) {
 	}).on('error', e => {
 		if (e.name === 'HTTPError') {
 			const statusCode = (e as Got.HTTPError).response.statusCode;
-			const statusMessage = (e as Got.HTTPError).response.statusMessage;
-			throw {
-				name: `StatusError`,
-				statusCode,
-				message: `${statusCode} ${statusMessage}`,
-			};
+			logger.error(`Got ${statusCode} (${url})`);
+			throw statusCode;
 		} else {
 			throw e;
 		}
