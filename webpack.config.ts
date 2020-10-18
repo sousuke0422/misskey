@@ -83,7 +83,7 @@ module.exports = {
 				}]
 			}, {
 				use: [{
-					loader: 'vue-style-loader',
+					loader: 'vue-style-loader'
 				}, {
 					loader: 'css-loader',
 					options: {
