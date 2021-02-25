@@ -1511,10 +1511,10 @@ autwh@0.1.0:
   dependencies:
     oauth "0.9.15"
 
-aws-sdk@2.849.0:
-  version "2.849.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.849.0.tgz#7fc9863e04f9e97c1f81f204fca84dfb2e4175dd"
-  integrity sha512-CzpK+0TcycRUzYKOdL5AnFcRmLDty+POWR+ZTeqCIY/rho3mM6jBTSseFreZTFiNxj8lIBBrMTsZ45KZ7Xm2Dg==
+aws-sdk@2.850.0:
+  version "2.850.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.850.0.tgz#be58a03f8e418590e2739844fe3f847c7246f9fb"
+  integrity sha512-RqPeSKe1JlhTUL9+xUsp771ZtMY7JICoQEnFJuJ+JVqGyILhg95L4t8S5KnznUfWYc0pcpTiHKLmPteHyHS3pw==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -8800,10 +8800,10 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-systeminformation@5.3.4:
-  version "5.3.4"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.3.4.tgz#22d54e0c03e23472b87a7087342dc354647be25b"
-  integrity sha512-lMrSxwkDHjn9Ot0xJwnCcYJF1tFTsjqp5TRDVDiZ5QC39T99j3xelUfpiGeCbmMdiY7Nu6CUYMwdRLb2bgOm8g==
+systeminformation@5.3.5:
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.3.5.tgz#9740360699c50c98babee6a1d3c49a16b2a93da2"
+  integrity sha512-8iQhngRztKDw1PB9+NBTcA4ruYc9twB16+VJL0pT4MsHYK3PQAsoNs56duBNwJvMRNpKNK7CF2PIzvWLwDn23w==
 
 syuilo-password-strength@0.0.1:
   version "0.0.1"
@@ -9751,10 +9751,10 @@ webpack-sources@^2.1.1:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
 
-webpack@5.24.0:
-  version "5.24.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.24.0.tgz#dbb5017dae053a506d8b909b0b21367d05fd56ee"
-  integrity sha512-ZkDxabL/InAQy9jluQTA8VIB7Gkhsv5uMJdAIz4QP2u4zaOX6+Tig7Jv+WSwhHp9qTnAx0rmn0dVTUPqZGRLbg==
+webpack@5.24.1:
+  version "5.24.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.24.1.tgz#6b7730bfba1ee94b05d05ef7c32743a35105a744"
+  integrity sha512-eg+6OIt6npUSwbhRQY6XffAixEUSARBf+WAWOxrZwOB4jRbbpMXlridFy/Yt7N0U20Ry1vp/nnDbtN7l1rUdIA==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.46"
